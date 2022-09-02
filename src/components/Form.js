@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 const Form = ({ fields, userDetails, onChange, fieldsError }) => {
-  console.log('===',fieldsError)
   return (
     <Box
       component="form"
@@ -13,7 +12,7 @@ const Form = ({ fields, userDetails, onChange, fieldsError }) => {
       autoComplete="off"
     >
       {fields &&
-        fields.map((field) => {
+        fields.map((field,index) => {
           return (
             <TextField
               id="outlined-basic"
@@ -24,7 +23,8 @@ const Form = ({ fields, userDetails, onChange, fieldsError }) => {
               onChange={onChange}
               required={field.required}
               error={fieldsError[field.name]}
-    
+              key={`field${index}`}
+              data-testid="outlined-basic"
             />
           );
         })}
