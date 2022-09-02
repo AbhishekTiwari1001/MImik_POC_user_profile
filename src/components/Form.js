@@ -1,7 +1,8 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-const Form = ({ fields, userDetails, onChange }) => {
+const Form = ({ fields, userDetails, onChange, fieldsError }) => {
+  console.log('===',fieldsError)
   return (
     <Box
       component="form"
@@ -16,11 +17,14 @@ const Form = ({ fields, userDetails, onChange }) => {
           return (
             <TextField
               id="outlined-basic"
-              label={field}
-              name={field}
+              label={field.label}
+              name={field.name}
               variant="outlined"
-              value={userDetails && userDetails[field]}
+              value={userDetails[field.name]}
               onChange={onChange}
+              required={field.required}
+              error={fieldsError[field.name]}
+    
             />
           );
         })}

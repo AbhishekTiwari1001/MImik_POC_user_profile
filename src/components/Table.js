@@ -5,11 +5,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Paper } from "@mui/material";
+import { styled } from '@mui/system';
+
+const WordWrapper = styled('div')({
+overflowWrap: 'break-word',
+maxWidth:'400px',
+});
 
 const CustomeTable = ({ data }) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Fields</TableCell>
@@ -27,7 +33,7 @@ const CustomeTable = ({ data }) => {
                   {field}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {data[field]}
+                  <WordWrapper>{data[field]}</WordWrapper>
                 </TableCell>
               </TableRow>
             ))}
